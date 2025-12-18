@@ -1,0 +1,96 @@
+/* app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+
+@font-face {
+  font-family: 'Constantia';
+  src: local('Constantia'), local('Constantia-Regular');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Constantia';
+  src: local('Constantia Bold'), local('Constantia-Bold');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --background: #1D1D1B;
+  --foreground: #ffffff;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-serif: 'Constantia', serif;
+  --font-sans: 'Commissioner', sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background: #1D1D1B;
+    color: #ffffff;
+    font-family: 'Commissioner', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .text-gradient-portfolio {
+    background: linear-gradient(180deg, #D88152 23%, #CC5C37 53%, #C23E20 83%, #BE3217 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-mocki {
+    color: #C13317;
+    font-family: 'Constantia', serif;
+  }
+  
+  .text-about {
+    font-family: 'Commissioner', sans-serif;
+    color: #FFCFB9;
+  }
+  
+  .bg-dark {
+    background-color: #1D1D1B;
+  }
+  
+  /* Эффект тетрадной бумаги */
+  .notebook-paper {
+    background-image: 
+      linear-gradient(to right, #e0e0e0 1px, transparent 1px),
+      linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  /* Винтажный эффект для фото */
+  .vintage-filter {
+    filter: sepia(0.2) contrast(1.1) brightness(1.05);
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
