@@ -21,7 +21,7 @@ export default function Works() {
   const buttonControls = useAnimation();
   
   // Работы с реальными проектами
-  const initialWorks = [
+  const allWorks = [
     { 
       id: 1, 
       title: "Троицкая камвольная фабрика", 
@@ -29,7 +29,7 @@ export default function Works() {
       description: "Редизайн корпоративного сайта",
       image: "/works/trowool.svg",
       year: "2024",
-      route: "/troitskaya-kamvolnaya" // прямой маршрут
+      route: "/troitskaya-kamvolnaya"
     },
     { 
       id: 2, 
@@ -38,7 +38,7 @@ export default function Works() {
       description: "Экспериментальный шрифт",
       image: "/works/3d-logo.png",
       year: "2023",
-      route: "/3d-logo" // прямой маршрут
+      route: "/3d-logo"
     },
     { 
       id: 3, 
@@ -47,7 +47,7 @@ export default function Works() {
       description: "Шрифтовой плакат для обложки",
       image: "/works/porog.png",
       year: "2023",
-      route: "/porog" // прямой маршрут
+      route: "/porog"
     },
     { 
       id: 4, 
@@ -56,7 +56,7 @@ export default function Works() {
       description: "Плакаты с экологическим посылом",
       image: "/works/eco.png",
       year: "2023",
-      route: "/eco-posters" // прямой маршрут
+      route: "/eco-posters"
     },
     { 
       id: 5, 
@@ -65,7 +65,7 @@ export default function Works() {
       description: "Фирменный стиль для компании",
       image: "/works/berez.svg",
       year: "2025",
-      route: "/bereza-derevo" // прямой маршрут
+      route: "/bereza-derevo"
     },
     { 
       id: 6, 
@@ -74,16 +74,9 @@ export default function Works() {
       description: "Логотип и фирменный стиль",
       image: "/works/psix.svg",
       year: "2025",
-      route: "/psych-center" // прямой маршрут
+      route: "/psych-center"
     }
   ];
-
-  const additionalWorks = [
-    { 
-    }
-  ];
-  
-  const allWorks = showMore ? [...initialWorks, ...additionalWorks] : initialWorks;
 
   // Обработчик клика по работе
   const handleWorkClick = (route: string) => {
@@ -303,7 +296,7 @@ export default function Works() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ 
                 duration: 0.5, 
-                delay: (showMore ? index * 0.05 : 0.2 + index * 0.1),
+                delay: 0.2 + index * 0.1,
                 ease: "easeOut"
               }}
               whileHover={{ 
@@ -394,7 +387,7 @@ export default function Works() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
                   duration: 0.4,
-                  delay: (showMore ? 0.4 + index * 0.05 : 0.6 + index * 0.1)
+                  delay: 0.6 + index * 0.1
                 }}
                 className="text-center"
               >
@@ -417,105 +410,6 @@ export default function Works() {
               </motion.div>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Кнопка "Показать больше" */}
-        <motion.div
-          ref={buttonRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={buttonControls}
-        >
-          {!showMore && (
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              onClick={() => setShowMore(true)}
-              className="flex items-center justify-center gap-2 mx-auto mt-16"
-              style={{
-                width: '180px',
-                height: '45px',
-                backgroundColor: 'transparent',
-                color: '#691B0F',
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: '18px',
-                fontWeight: '500'
-              }}
-              whileHover={{ 
-                gap: '12px',
-                scale: 1.05
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Показать больше</span>
-              <motion.svg 
-                width="18" 
-                height="18" 
-                viewBox="0 0 18 18" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-                animate={{ y: [0, 3, 0] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              >
-                <path 
-                  d="M9 13.5L4.5 9L9 4.5L10.35 5.85L7.9875 8.2125H13.5V9.7875H7.9875L10.35 12.15L9 13.5Z" 
-                  fill="#691B0F"
-                />
-              </motion.svg>
-            </motion.button>
-          )}
-
-          {/* Кнопка "Скрыть" когда показаны все работы */}
-          {showMore && (
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              onClick={() => setShowMore(false)}
-              className="flex items-center justify-center gap-2 mx-auto mt-16"
-              style={{
-                width: '180px',
-                height: '45px',
-                backgroundColor: 'transparent',
-                color: '#691B0F',
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: '18px',
-                fontWeight: '500'
-              }}
-              whileHover={{ 
-                gap: '12px',
-                scale: 1.05
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Скрыть</span>
-              <motion.svg 
-                width="18" 
-                height="18" 
-                viewBox="0 0 18 18" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ transform: 'rotate(180deg)' }}
-                animate={{ y: [0, -3, 0] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              >
-                <path 
-                  d="M9 13.5L4.5 9L9 4.5L10.35 5.85L7.9875 8.2125H13.5V9.7875H7.9875L10.35 12.15L9 13.5Z" 
-                  fill="#691B0F"
-                />
-              </motion.svg>
-            </motion.button>
-          )}
         </motion.div>
       </div>
     </div>
